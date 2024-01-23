@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX and Babel</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Header Component
+    let Header = ({ title }) => (
+      <header>
+        <h1>{title}</h1>
+      </header>
+    );
+
+    // Footer Component
+    let Footer = ({ author }) => (
+      <footer>
+        <p>Created by: {author}</p>
+      </footer>
+    );
+
+    // Content Component
+    let Content = ({ content }) => (
+      <section>
+        <p>{content}</p>
+      </section>
+    );
+
+    // App Component (Parent Component)
+    class App extends React.Component {
+      render() {
+        let title = "My React App";
+        let author = "Neetu singh";
+        let contentText = "This is the origin of the content.";
+
+        return (
+          <div>
+            {/* Header component with title prop */}
+            <Header title={title} />
+
+            {/* Content component with content prop */}
+            <Content content={contentText} />
+
+            {/* Footer component with author prop */}
+            <Footer author={author} />
+          </div>
+        );
+      }
+    }
+
+    // Mounting the App component to the root element
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>

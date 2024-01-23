@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX Showcase</title>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+
+  <script type="text/babel">
+    // React component JSXShowcase
+    function JSShowcase() {
+      // JavaScript Integration: Variables, Functions, and Arrays
+      let greeting = "Hello world";
+      let isLoggedIn = true;
+
+      let handleClick = () => {
+        alert("Button Clicked!");
+      };
+
+      let fruits = ["Apple", "Banana", "Orange"];
+
+      // Conditional Rendering based on isLoggedIn
+      let conditionalContent = isLoggedIn ? (
+        <p>Welcome!</p>
+      ) : (
+        <p>Please log in to view content.</p>
+      );
+
+      // Element Rendering: Variety of HTML elements using JSX
+      return (
+        <div>
+          <h1>{greeting}</h1>
+          <p>Paragraph in JSX.</p>
+          
+          {/* Using JavaScript expressions */}
+          <p>{`The length of the greeting is: ${greeting.length}`}</p>
+
+          {/* Conditional Rendering */}
+          {conditionalContent}
+
+          {/* Rendering array elements */}
+          <ul>
+            {fruits.map((fruit, index) => (
+              <li key={index}>{fruit}</li>
+            ))}
+          </ul>
+
+          {/* Event handling with JSX */}
+          <button onClick={handleClick}>Click me!</button>
+        </div>
+      );
+    }
+
+    // Mounting the JSXShowcase component to the root element
+    ReactDOM.render(<JSShowcase />, document.getElementById('root'));
+  </script>
+
+</body>
+</html>     

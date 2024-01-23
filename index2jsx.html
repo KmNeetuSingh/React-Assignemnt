@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSX and Babel</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Basic level of the uses oof jsx is 
+        // let fine = <p>"Seize of the day"</p>
+        // Intermediate level
+        // let dynamic="seize of the day!";
+        // let fine=<p>{dynamic}</p>
+        // Advanced level of the uses of jsx.......
+        /*const isSeize = false;
+        let fine;
+        if (isSeize) {
+            fine = <p>Seize of the day</p>
+        }
+        else {
+            fine = <p>Make the most of it </p>
+        }*/
+        // You can also use this function
+        let isSeize = true;
+        let fine = isSeize ? <p>Seize of the Day!</p> : <p>MAke of the most of it</p>
+        // Render the JSX element inside the div with the id "root"
+        ReactDOM.render(fine, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

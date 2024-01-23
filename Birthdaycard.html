@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Card</title>
+    <style>
+        .text{
+            font-size: larger;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+            }
+
+/* Basic styling for the card */
+      #card {   
+        /* background-image:url('https://images.unsplash.com/photo-1705844996076-eaf8cfad3a16?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D'); */   
+        box-shadow:rgb(229, 233, 6) 0px 22px 70px 4px;
+        height: 100%;
+        width: 400px; /* Increase the width */  
+        padding: 50px; /* Increase the padding */
+        margin: 30px; /* Increase the margin */
+        border: 1px solid #ccc;
+        border-radius: 400px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      body{
+        background-image: url('https://media.istockphoto.com/id/1008765442/photo/burning-candle-with-white-rose-in-remembrance.jpg?s=612x612&w=0&k=20&c=oQO7KXgcynfiPHLu1dzeZFucygYO91vMTvzU0l5Ck-Q=');
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Import React and ReactDOM
+    const { useState } = React;
+    const { render } = ReactDOM;
+
+    // BirthdayCard Component
+    let BirthdayCard = () => {
+      // State for recipient's name and custom message
+      let [recipientName, setRecipientName] = useState('');
+      let [customMessage, setCustomMessage] = useState('');
+
+      // Function to handle name input change
+      let handleNameChange = (event) => {
+        setRecipientName(event.target.value);
+      };
+
+      // Function to handle message input change
+      let handleMessageChange = (event) => {
+        setCustomMessage(event.target.value);
+      };
+
+      // Determine background color based on name length
+      let backgroundColor =
+        recipientName.length > 3 ? '#ffcccb' : '#c1f0c1'; // Red for long names, Green for short names
+
+      // Render the card with dynamic content and styling
+      return (
+        <div id="card" style={{ backgroundColor }}>
+          <h2>Happy Birthday</h2>
+          <label>
+            Recipient's Name:
+            <input type="text" value={recipientName} onChange={handleNameChange} />
+          </label>
+          <br />
+          <label>
+            Custom Message:
+            <input type="text" value={customMessage} onChange={handleMessageChange} />
+          </label>
+          <br />
+          <p>{`Happy Birthday, ${recipientName}! ${customMessage}`}</p>
+        </div>
+      );
+    };
+
+    // Render BirthdayCard component
+    render(<BirthdayCard />, document.getElementById('root'));
+  </script>
+  </marquee>
+</html>

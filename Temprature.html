@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      body {
+        background-image: url('https://media.istockphoto.com/id/1432852647/photo/water-sport-jetski-adrenaline-doing-circles-on-water-from-luquillo-la-monseratte-beach-puerto.jpg?s=612x612&w=0&k=20&c=-PSt03Saw5s1h5eJAEySFHId4e8E_2ti9ruwCJdq_a0=');
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      div {
+        box-shadow: 0 20px 50px darkturquoise;
+        background-color: skyblue;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      input:hover,
+      input:focus {
+        border: 5px solid #5f9ea0;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input[type="number"]:invalid {
+        border: 5px solid #ff6347;
+      }
+
+
+      input[type="number"]:focus {
+        outline: none;
+      }
+
+      input[type="number"]:hover {
+        border: 5px solid #5f9ea0;
+      }
+
+      input[type="number"]:focus::-webkit-inner-spin-button,
+      input[type="number"]:hover::-webkit-inner-spin-button {
+        background-color: #5f9ea0;
+      }
+
+      input[type="number"]:focus::-webkit-outer-spin-button,
+      input[type="number"]:hover::-webkit-outer-spin-button {
+        background-color: #5f9ea0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      let { useState } = React;
+
+      let TemperatureConverter = () => {
+        // State for Celsius and Fahrenheit inputs
+        let [celsius, setCelsius] = useState('');
+        let [fahrenheit, setFahrenheit] = useState('');
+
+        // Conversion functions
+        let celsiusToFahrenheit = (c) => (c * 9) / 5 + 32;
+        let fahrenheitToCelsius = (f) => ((f - 32) * 5) / 9;
+
+        // Event handlers for input changes
+        let handleCelsiusChange = (event) => {
+          let value = event.target.value;
+          setCelsius(value);
+          setFahrenheit(value === '' ? '' : celsiusToFahrenheit(parseFloat(value)).toFixed(2));
+        };
+
+        let handleFahrenheitChange = (event) => {
+          let value = event.target.value;
+          setFahrenheit(value);
+          setCelsius(value === '' ? '' : fahrenheitToCelsius(parseFloat(value)).toFixed(2));
+        };
+
+        return (
+          <div>
+            <label>Celsius:</label>
+            <input type="number" value={celsius} onChange={handleCelsiusChange} />
+
+            <label>Fahrenheit:</label>
+            <input type="number" value={fahrenheit} onChange={handleFahrenheitChange} />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<TemperatureConverter />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
